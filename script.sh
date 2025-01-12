@@ -205,6 +205,14 @@ else
 fi
 
 
+# Setup CNI
+sudo mkdir -p /opt/cni/bin
+
+# Download and install CNI plugins
+wget https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz
+sudo tar -xzf cni-plugins-linux-amd64-v1.3.0.tgz -C /opt/cni/bin
+
+
 # Reload systemd, enable and start Nomad and Consul services
 sudo systemctl daemon-reload
 sudo systemctl enable nomad consul
